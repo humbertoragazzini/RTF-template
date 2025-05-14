@@ -18,7 +18,7 @@ export default function Experience() {
         powerPreference: "high-performance",
       }}
     >
-      <Perf />
+      <Perf position="top-left"/>
       <OrbitControls></OrbitControls>
       <Camera></Camera>
       <SoftShadows focus={2} samples={15} size={20}></SoftShadows>
