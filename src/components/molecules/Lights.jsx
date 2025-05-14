@@ -13,6 +13,17 @@ export default function Lights() {
       <directionalLight
         ref={directionalRef}
         position={[0, 10, 10]}
+        castShadow
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+        shadow-camera-near={1}
+        shadow-camera-far={50}
+        shadow-camera-left={-10}
+        shadow-camera-right={10}
+        shadow-camera-top={10}
+        shadow-camera-bottom={-10}
+        intensity={1.2}
+        color={"#ffffff"}
       ></directionalLight>
     </group>
   );

@@ -3,7 +3,7 @@ import * as THREE from "three";
 import Camera from "../atoms/Camera";
 import Lights from "../molecules/Lights";
 import Scene from "../molecules/Scene";
-import { OrbitControls, PerformanceMonitor } from "@react-three/drei";
+import { OrbitControls, PerformanceMonitor, SoftShadows } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 
 export default function Experience() {
@@ -21,6 +21,7 @@ export default function Experience() {
       <Perf />
       <OrbitControls></OrbitControls>
       <Camera></Camera>
+      <SoftShadows focus={2} samples={15} size={20}></SoftShadows>
       <Lights></Lights>
       <Scene></Scene>
     </Canvas>
