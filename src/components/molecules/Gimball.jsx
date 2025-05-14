@@ -1,7 +1,8 @@
 import { useControls } from "leva";
 
-export default function Gimbal({ children, position, rotation }) {
-  const controls = useControls("Gimbal Controls", {
+export default function Gimbal({ children, position, rotation, name }) {
+
+  const controls = useControls(name, {
     posX: { value: position.x, min: -50, max: 50, step: 0.01 },
     posY: { value: position.y, min: -50, max: 50, step: 0.01 },
     posZ: { value: position.z, min: -50, max: 50, step: 0.01 },

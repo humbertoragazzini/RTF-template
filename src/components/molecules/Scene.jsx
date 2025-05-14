@@ -3,7 +3,7 @@ import TheFloor from "../atoms/TheFloor";
 export default function Scene() {
   return (
     <group>
-      <TheBox></TheBox>
+      <TheBox name={"new-box-1"}></TheBox>
       <TheFloor></TheFloor>
     </group>
   );
