@@ -5,7 +5,7 @@ export default function Lights() {
   return (
     <group>
       <AmbientLight></AmbientLight>
-      <DirectionalLight position={{x:0,y:50,z:50}} name={"directional-light-1"}></DirectionalLight>
+      <DirectionalLight position={{x:0,y:25,z:25}} name={"directional-light-1"}></DirectionalLight>
     </group>
   );
 }

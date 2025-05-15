@@ -21,7 +21,7 @@ export default function Experience() {
       <Perf position="top-left"/>
       <OrbitControls></OrbitControls>
       <Camera></Camera>
-      <SoftShadows focus={2} samples={15} size={20}></SoftShadows>
+      {/* <SoftShadows focus={2} samples={15} size={20}></SoftShadows> */}
       <Lights></Lights>
       <Scene></Scene>
     </Canvas>
