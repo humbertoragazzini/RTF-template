@@ -16,6 +16,7 @@ export default function Experience() {
         physicallyCorrectLights: true,
         preserveDrawingBuffer: true,
         powerPreference: "high-performance",
+        alpha: true
       }}
     >
       <Perf position="top-left"/>

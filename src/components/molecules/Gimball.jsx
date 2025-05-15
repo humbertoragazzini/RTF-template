@@ -9,7 +9,8 @@ export default function Gimbal({ children, position, rotation, name }) {
     rotX: { value: rotation.x, min: -Math.PI, max: Math.PI, step: 0.01 },
     rotY: { value: rotation.y, min: -Math.PI, max: Math.PI, step: 0.01 },
     rotZ: { value: rotation.z, min: -Math.PI, max: Math.PI, step: 0.01 },
-  });
+    collapsed: true
+  }, { collapsed: true });
 
   return (
     <group
