@@ -9,14 +9,14 @@ export default function Scene() {
       <TheBox name={"new-box-2"} position={[0,1.5,2]}></TheBox>
       <TheFloor></TheFloor>
       <HtmlObj position={[0, 1.5, -1]} name={"new-html-1"}>
-        <div className="bg-red-200 text-white aspect-video overflow-hidden">
+        <div className="bg-red-200 text-white aspect-video rounded-sm overflow-hidden">
           <div className="w-[150px] h-full aspect-video">
            <p>This is a div</p>
           </div>
         </div>
       </HtmlObj>
       <HtmlObj position={[0, 1.5, 1]} name={"new-html-2"}>
-        <div className="bg-red-200 text-white aspect-video overflow-hidden">
+        <div className="bg-red-200 text-white aspect-video rounded-sm overflow-hidden">
           <div className="w-[150px] h-full aspect-video">
            <p>This is a div</p>
           </div>

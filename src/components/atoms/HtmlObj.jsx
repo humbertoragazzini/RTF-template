@@ -1,45 +1,59 @@
-import { Html } from "@react-three/drei";
+import { Html, Shape } from "@react-three/drei";
 import Gimbal from "../molecules/Gimball";
 import { DoubleSide } from "three";
 import { RoundedBoxGeometry } from "three/examples/jsm/Addons.js";
 import * as THREE from "three"
+import React from "react";
 
 export default function HtmlObj({ position, occlude, children, name }) {
 
-
-    function createRoundedPlaneGeometry(width, height, radius, segments = 5) {
-        const shape = new THREE.Shape()
-        const hw = width / 2
-        const hh = height / 2
+    function createRoundedRectShape(w, h, r, s = 8){
+        // This function uses width, height, radiusCorner and smoothness
       
-        // Start top-left corner
-        shape.moveTo(-hw + radius, -hh)
+        const pi2 = Math.PI * 2;
+        const n = (s + 1) * 4; // number of segments
+        let indices = [];
+        let positions = [];
+        let uvs = [];
+        let qu, sgx, sgy, x, y;
       
-        // Top edge
-        shape.lineTo(hw - radius, -hh)
-        shape.quadraticCurveTo(hw, -hh, hw, -hh + radius)
+        for (let j = 1; j < n + 1; j++) indices.push(0, j, j + 1); // 0 is center
+        indices.push(0, n, 1);
+        positions.push(0, 0, 0); // rectangle center
+        uvs.push(0.5, 0.5);
+        for (let j = 0; j < n; j++) contour(j);
       
-        // Right edge
-        shape.lineTo(hw, hh - radius)
-        shape.quadraticCurveTo(hw, hh, hw - radius, hh)
+        const geometry = new THREE.BufferGeometry();
+        geometry.setIndex(new THREE.BufferAttribute(new Uint32Array(indices), 1));
+        geometry.setAttribute(
+          "position",
+          new THREE.BufferAttribute(new Float32Array(positions), 3)
+        );
+        geometry.setAttribute(
+          "uv",
+          new THREE.BufferAttribute(new Float32Array(uvs), 2)
+        );
       
-        // Bottom edge
-        shape.lineTo(-hw + radius, hh)
-        shape.quadraticCurveTo(-hw, hh, -hw, hh - radius)
+        return geometry;
       
-        // Left edge
-        shape.lineTo(-hw, -hh + radius)
-        shape.quadraticCurveTo(-hw, -hh, -hw + radius, -hh)
+        function contour(j) {
+          qu = Math.trunc((4 * j) / n) + 1; // quadrant  qu: 1..4
+          sgx = qu === 1 || qu === 4 ? 1 : -1; // signum left/right
+          sgy = qu < 3 ? 1 : -1; // signum  top / bottom
+          x = sgx * (w / 2 - r) + r * Math.cos((pi2 * (j - qu + 1)) / (n - 4)); // corner center + circle
+          y = sgy * (h / 2 - r) + r * Math.sin((pi2 * (j - qu + 1)) / (n - 4));
       
-        return new THREE.ShapeGeometry(shape, segments)
+          positions.push(x, y, 0);
+          uvs.push(0.5 + x / w, 0.5 + y / h);
+        }
       }
-
+      
     return (
         <Gimbal position={{ x: position[0], y: position[1], z: position[2] }} rotation={{ x: 0, y: 0, z: 0 }} name={name}>
             <mesh>
                 <Html occlude={"blending"} transform castShadow
                     receiveShadow
-                    geometry={createRoundedPlaneGeometry(1.6,0.9,1.5,5)}
+                    geometry={<primitive object={createRoundedRectShape(3.75,2.11,0.1,50)}/>}
                     >
                     {children}
                 </Html>
