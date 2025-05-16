@@ -53,11 +53,15 @@ export default function HtmlObj({ position, occlude, children, name }) {
             <mesh>
                 <Html occlude={"blending"} transform castShadow
                     receiveShadow
-                    geometry={<primitive object={createRoundedRectShape(3.75,2.11,0.1,50)}/>}
-                    material={<primitive object={new THREE.MeshStandardMaterial({color:"red",side: THREE.DoubleSide})}></primitive>}
+                    geometry={<primitive object={createRoundedRectShape(1.0,1.0,0.1,50)}/>}
+                    // geometry={<boxGeometry></boxGeometry>}
                     >
                     {children}
                 </Html>
+                {/* <mesh position={[0,0,-0.05]}>
+                <primitive object={createRoundedRectShape(1.0,1.0,0.1,50)}/>
+                <meshBasicMaterial color={"red"}></meshBasicMaterial>
+                </mesh> */}
             </mesh>
         </Gimbal>
 
