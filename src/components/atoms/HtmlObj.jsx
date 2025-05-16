@@ -9,7 +9,7 @@ export default function HtmlObj({ position, occlude, children, name }) {
 
     function createRoundedRectShape(w, h, r, s = 8){
         // This function uses width, height, radiusCorner and smoothness
-      
+        //TODO we need a responsive way to make this have the same border radius than our html element
         const pi2 = Math.PI * 2;
         const n = (s + 1) * 4; // number of segments
         let indices = [];
@@ -54,6 +54,7 @@ export default function HtmlObj({ position, occlude, children, name }) {
                 <Html occlude={"blending"} transform castShadow
                     receiveShadow
                     geometry={<primitive object={createRoundedRectShape(3.75,2.11,0.1,50)}/>}
+                    material={<primitive object={new THREE.MeshStandardMaterial({color:"red",side: THREE.DoubleSide})}></primitive>}
                     >
                     {children}
                 </Html>
