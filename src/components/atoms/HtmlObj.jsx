@@ -3,9 +3,20 @@ import Gimbal from "../molecules/Gimball";
 import { DoubleSide } from "three";
 import { RoundedBoxGeometry } from "three/examples/jsm/Addons.js";
 import * as THREE from "three"
-import React from "react";
+import React, { useRef, useState } from "react";
+import { useFrame } from "@react-three/fiber";
 
 export default function HtmlObj({ position, occlude, children, name }) {
+
+  const htmlRef = useRef();
+  const meshRef = useRef();
+  const [scale,setScale] = useState();
+
+    useFrame(()=>{
+      if(meshRef.current.children[0].children[0].scale.y !== scale){
+        setScale(meshRef.current.children[0].children[0].scale.y);
+      }
+    })
 
     function createRoundedRectShape(w, h, r, s = 8){
         // This function uses width, height, radiusCorner and smoothness
@@ -50,18 +61,14 @@ export default function HtmlObj({ position, occlude, children, name }) {
       
     return (
         <Gimbal position={{ x: position[0], y: position[1], z: position[2] }} rotation={{ x: 0, y: 0, z: 0 }} name={name}>
-            <mesh>
-                <Html occlude={"blending"} transform castShadow
+            <mesh ref={meshRef}>
+                <Html position={[0,scale/2,0]} occlude={"blending"} transform castShadow ref={htmlRef}
                     receiveShadow
-                    geometry={<primitive object={createRoundedRectShape(1.0,1.0,0.1,50)}/>}
-                    // geometry={<boxGeometry></boxGeometry>}
+                    // geometry={<primitive object={createRoundedRectShape(1.0,1.0,0.1,50)}/>}
+                    // geometry={<planeGeometry></planeGeometry>}
                     >
                     {children}
                 </Html>
-                {/* <mesh position={[0,0,-0.05]}>
-                <primitive object={createRoundedRectShape(1.0,1.0,0.1,50)}/>
-                <meshBasicMaterial color={"red"}></meshBasicMaterial>
-                </mesh> */}
             </mesh>
         </Gimbal>
 
