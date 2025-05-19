@@ -14,7 +14,7 @@ export default function HtmlObj({ position, occlude, children, name }) {
 
     useFrame(()=>{
       if(meshRef.current.children[0].children[0].scale.y !== scale){
-        setScale(meshRef.current.children[0].children[0].scale.y);
+        // setScale(meshRef.current.children[0].children[0].scale.y);
       }
     })
 
@@ -62,7 +62,7 @@ export default function HtmlObj({ position, occlude, children, name }) {
     return (
         <Gimbal position={{ x: position[0], y: position[1], z: position[2] }} rotation={{ x: 0, y: 0, z: 0 }} name={name}>
             <mesh ref={meshRef}>
-                <Html position={[0,scale/2,0]} occlude={"blending"} transform castShadow ref={htmlRef}
+                <Html position={[0,0,0]} occlude={"blending"} transform castShadow ref={htmlRef}
                     receiveShadow
                     // geometry={<primitive object={createRoundedRectShape(1.0,1.0,0.1,50)}/>}
                     // geometry={<planeGeometry></planeGeometry>}
