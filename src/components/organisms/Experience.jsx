@@ -3,7 +3,7 @@ import * as THREE from "three";
 import Camera from "../atoms/Camera";
 import Lights from "../molecules/Lights";
 import Scene from "../molecules/Scene";
-import { OrbitControls, PerformanceMonitor, SoftShadows } from "@react-three/drei";
+import { CubeCamera, OrbitControls, PerformanceMonitor, SoftShadows } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 
 export default function Experience() {
