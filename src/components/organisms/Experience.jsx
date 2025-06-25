@@ -9,7 +9,7 @@ import FrameLimiter from "../atoms/FrameLimiter";
 import { useState } from "react";
 
 export default function Experience() {
-  const [fps,setFps] = useState(60)
+  const [fps,setFps] = useState(5)
   
   return (
     <Canvas
@@ -22,11 +22,11 @@ export default function Experience() {
         powerPreference: "high-performance",
         alpha: true
       }}
-      frameloop={fps ? "demand" : "always"}
+      frameloop={fps > 0 ? "demand" : "always"}
     >
       {fps == null && <Perf position="top-left"/>}
       {(fps > 0) && <FrameLimiter fpsTarget={fps}></FrameLimiter>}
-      <OrbitControls></OrbitControls>
+      {/* <OrbitControls makeDefault={false} enableDamping={false} ></OrbitControls> */}
       <Camera></Camera>
       {/* <SoftShadows focus={2} samples={15} size={20}></SoftShadows> */}
       <Lights></Lights>
