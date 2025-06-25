@@ -66,6 +66,7 @@ export default function HtmlObj({ position, occlude, children, name }) {
       }
       
     return (
+      // i need to make the html container same size as the 3d mesh + make tailwind work with the size of the element intead of the view port
         <Gimbal position={{ x: position[0], y: position[1], z: position[2] }} rotation={{ x: 0, y: 0, z: 0 }} name={name}>
             <mesh ref={meshRef}>
                 <Html position={[0,0,0]} occlude={occlude ? "blending" : true} transform castShadow ref={htmlRef}
