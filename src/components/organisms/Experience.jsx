@@ -5,8 +5,10 @@ import Lights from "../molecules/Lights";
 import Scene from "../molecules/Scene";
 import { CubeCamera, OrbitControls, PerformanceMonitor, SoftShadows } from "@react-three/drei";
 import { Perf } from "r3f-perf";
+import FrameLimiter from "../atoms/FrameLimiter";
 
 export default function Experience() {
+  
   return (
     <Canvas
       shadows
@@ -18,7 +20,9 @@ export default function Experience() {
         powerPreference: "high-performance",
         alpha: true
       }}
+      frameloop="demand"
     >
+      <FrameLimiter></FrameLimiter>
       <Perf position="top-left"/>
       <OrbitControls></OrbitControls>
       <Camera></Camera>
