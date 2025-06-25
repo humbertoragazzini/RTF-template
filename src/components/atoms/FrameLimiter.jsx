@@ -10,7 +10,7 @@ export default function FrameLimiter() {
 
   useEffect(() => {
     let last = performance.now()
-    const targetFps = 60
+    const targetFps = 30
     const interval = 1000 / targetFps
 
     const loop = () => {

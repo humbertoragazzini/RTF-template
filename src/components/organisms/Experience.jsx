@@ -6,8 +6,10 @@ import Scene from "../molecules/Scene";
 import { CubeCamera, OrbitControls, PerformanceMonitor, SoftShadows } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 import FrameLimiter from "../atoms/FrameLimiter";
+import { useState } from "react";
 
 export default function Experience() {
+  const [fps,setFps] = useState(null)
   
   return (
     <Canvas
@@ -20,10 +22,10 @@ export default function Experience() {
         powerPreference: "high-performance",
         alpha: true
       }}
-      frameloop="demand"
+      frameloop={fps ? "demand" : "always"}
     >
-      <FrameLimiter></FrameLimiter>
-      <Perf position="top-left"/>
+      {fps == null && <Perf position="top-left"/>}
+      {(fps == 30 || fps == 60) && <FrameLimiter fps={fps}></FrameLimiter>}
       <OrbitControls></OrbitControls>
       <Camera></Camera>
       {/* <SoftShadows focus={2} samples={15} size={20}></SoftShadows> */}
