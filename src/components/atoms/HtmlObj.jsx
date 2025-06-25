@@ -10,12 +10,18 @@ export default function HtmlObj({ position, occlude, children, name }) {
 
   const htmlRef = useRef();
   const meshRef = useRef();
+  const mainDivRef = useRef();
   const [scale,setScale] = useState();
+  const [x,setX] = useState();
+  const [y,setY] = useState();
 
     useFrame(()=>{
       if(meshRef.current.children[0].children[0].scale.y !== scale){
         // setScale(meshRef.current.children[0].children[0].scale.y);
       }
+      // console.log(meshRef.current.children[0].children[0])
+      const width = mainDivRef.current.getBoundingClientRect().width;
+      const height = mainDivRef.current.getBoundingClientRect().height;
     })
 
     function createRoundedRectShape(w, h, r, s = 8){
@@ -67,7 +73,9 @@ export default function HtmlObj({ position, occlude, children, name }) {
                     // geometry={<primitive object={createRoundedRectShape(1.0,1.0,0.1,50)}/>}
                     // geometry={<planeGeometry></planeGeometry>}
                     >
-                    {children}
+                      <div ref={mainDivRef}>
+                        {children}
+                      </div>
                 </Html>
             </mesh>
         </Gimbal>

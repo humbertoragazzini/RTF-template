@@ -13,11 +13,11 @@ export default function TheFloor() {
           <CubeCamera frames={1} resolution={256} near={1} far={1000}>
             {(texture) => (
               <mesh>
-                <planeGeometry args={[50, 50, 50]} />
+                <planeGeometry args={[5, 5, 50]} />
                 <meshStandardMaterial
-                  color="black"
-                  envMap={texture}
-                  metalness={1}
+                  color="#ffffff"
+                  // envMap={texture}
+                  metalness={0}
                   roughness={0.1}
                 />
               </mesh>
