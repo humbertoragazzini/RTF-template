@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { useThree } from '@react-three/fiber'
 import { OrbitControls as ThreeOrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
-export default function FrameLimiter({ fpsTarget = 60 }) {
+export default function OrbitControls({ fpsTarget = 60 }) {
   const { invalidate, clock, camera, gl } = useThree()
   const frameRef = useRef()
   const frameCount = useRef(0)
@@ -21,13 +21,14 @@ export default function FrameLimiter({ fpsTarget = 60 }) {
       const now = clock.getElapsedTime()
 
       if (now - lastRender.current >= interval) {
-        invalidate()
         controls.current?.update()
+        invalidate()
         lastRender.current = now
         frameCount.current++
       }
 
       if (now - lastFpsUpdate.current >= 1) {
+        console.log(frameCount.current)
         frameCount.current = 0
         lastFpsUpdate.current = now
       }

@@ -3,9 +3,9 @@ import * as THREE from "three";
 import Camera from "../atoms/Camera";
 import Lights from "../molecules/Lights";
 import Scene from "../molecules/Scene";
-import { CubeCamera, OrbitControls, PerformanceMonitor, SoftShadows } from "@react-three/drei";
+import { CubeCamera, PerformanceMonitor, SoftShadows } from "@react-three/drei";
 import { Perf } from "r3f-perf";
-import FrameLimiter from "../atoms/FrameLimiter";
+import OrbitControls from "../atoms/OrbitControls";
 import { useState } from "react";
 
 export default function Experience() {
@@ -25,7 +25,7 @@ export default function Experience() {
       frameloop={fps > 0 ? "demand" : "always"}
     >
       {/* {fps == null && <Perf position="top-left"/>} */}
-      {(fps > 0) && <FrameLimiter fpsTarget={fps}></FrameLimiter>}
+      <OrbitControls fpsTarget={fps}></OrbitControls>
       {/* <OrbitControls makeDefault={false} enableDamping={false} ></OrbitControls> */}
       <Camera></Camera>
       {/* <SoftShadows focus={2} samples={15} size={20}></SoftShadows> */}

@@ -72,7 +72,7 @@ export default function HtmlObj({ position, occlude, children, name }) {
                 <Html position={[0,0,0]} occlude={occlude ? "blending" : true} transform castShadow ref={htmlRef}
                     receiveShadow
                     // geometry={<primitive object={createRoundedRectShape(1.0,1.0,0.1,50)}/>}
-                    geometry={<planeGeometry></planeGeometry>}
+                    // geometry={<planeGeometry></planeGeometry>}
                     >
                       <div ref={mainDivRef}>
                         {children}
