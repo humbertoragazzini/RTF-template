@@ -12,24 +12,22 @@ export default function FrameLimiter({ fpsTarget = 60 }) {
 
   useEffect(() => {
     const interval = 1 / fpsTarget // seconds
-
-    controls.current = new ThreeOrbitControls(camera, gl.domElement)
-    controls.current.enableDamping = false
+    controls.current = new ThreeOrbitControls(camera, document.body)
+    controls.current.enableDamping = true
     controls.current.enableZoom = true
     controls.current.enablePan = true
 
     const loop = () => {
       const now = clock.getElapsedTime()
-        controls.current?.update()
 
       if (now - lastRender.current >= interval) {
         invalidate()
+        controls.current?.update()
         lastRender.current = now
         frameCount.current++
       }
 
       if (now - lastFpsUpdate.current >= 1) {
-        console.log('FPS:', frameCount.current)
         frameCount.current = 0
         lastFpsUpdate.current = now
       }
