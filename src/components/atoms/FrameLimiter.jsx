@@ -1,33 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useThree } from '@react-three/fiber'
 
-export default function FrameLimiter() {
-  const { invalidate } = useThree()
+export default function FrameLimiter({ fpsTarget = 60 }) {
+  const { invalidate, clock } = useThree()
   const frameRef = useRef()
-  const [frameCount, setFrameCount] = useState(0)
-  const [fps, setFps] = useState(0)
-  const lastFpsUpdate = useRef(performance.now())
+  const frameCount = useRef(0)
+  const lastFpsUpdate = useRef(clock.getElapsedTime())
+  const lastRender = useRef(clock.getElapsedTime())
 
   useEffect(() => {
-    let last = performance.now()
-    const targetFps = 30
-    const interval = 1000 / targetFps
-
+    const interval = 1000 / fpsTarget // seconds, not ms
     const loop = () => {
-      const now = performance.now()
+      const now = clock.getElapsedTime() * 1000 // seconds
 
-      // Trigger render at fixed interval
-      if (now - last >= interval) {
+      if (now - lastRender.current >= interval) {
         invalidate()
-        last = now
-        setFrameCount(prev => prev + 1)
+        lastRender.current = now
+        frameCount.current++
       }
 
-      // Update FPS every second
       if (now - lastFpsUpdate.current >= 1000) {
-        setFps(frameCount)
-        setFrameCount(0)
-        console.log(fps)
+        console.log('FPS:', frameCount.current)
+        frameCount.current = 0
         lastFpsUpdate.current = now
       }
 
@@ -36,7 +30,7 @@ export default function FrameLimiter() {
 
     frameRef.current = requestAnimationFrame(loop)
     return () => cancelAnimationFrame(frameRef.current)
-  }, [invalidate, frameCount])
+  }, [invalidate, fpsTarget, clock])
 
-  return null;
+  return null
 }
