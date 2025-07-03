@@ -7,9 +7,10 @@ import { CubeCamera, PerformanceMonitor, SoftShadows } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 import OrbitControls from "../atoms/OrbitControls";
 import { useState } from "react";
+import Tripod from "../molecules/Tripod";
 
 export default function Experience() {
-  const [fps,setFps] = useState(10)
+  const [fps,setFps] = useState(60)
   
   return (
     <Canvas
@@ -25,10 +26,9 @@ export default function Experience() {
       frameloop={fps > 0 ? "demand" : "always"}
     >
       {/* {fps == null && <Perf position="top-left"/>} */}
-      <OrbitControls fpsTarget={fps}></OrbitControls>
-      {/* <OrbitControls makeDefault={false} enableDamping={false} ></OrbitControls> */}
-      {/* <Camera></Camera> */}
+
       {/* <SoftShadows focus={2} samples={15} size={20}></SoftShadows> */}
+      <Tripod fps={fps}></Tripod>
       <Lights></Lights>
       <Scene></Scene>
     </Canvas>
