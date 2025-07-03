@@ -27,7 +27,7 @@ export default function Experience() {
       {/* {fps == null && <Perf position="top-left"/>} */}
       <OrbitControls fpsTarget={fps}></OrbitControls>
       {/* <OrbitControls makeDefault={false} enableDamping={false} ></OrbitControls> */}
-      <Camera></Camera>
+      {/* <Camera></Camera> */}
       {/* <SoftShadows focus={2} samples={15} size={20}></SoftShadows> */}
       <Lights></Lights>
       <Scene></Scene>
