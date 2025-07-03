@@ -1,7 +1,11 @@
+import { useFrame } from "@react-three/fiber"
 import Gimbal from "../molecules/Gimball"
 import { CubeCamera } from "@react-three/drei"
 
 export default function TheFloor() {
+  useFrame(({camera})=>{
+    console.log(camera)
+  })
   return (
     <mesh receiveShadow>
       <Gimbal
@@ -15,8 +19,8 @@ export default function TheFloor() {
               <mesh>
                 <planeGeometry args={[5, 5, 50]} />
                 <meshStandardMaterial
-                  color="#ffffff"
-                  // envMap={texture}
+                  color="black"
+                  envMap={texture}
                   metalness={0}
                   roughness={0.1}
                 />

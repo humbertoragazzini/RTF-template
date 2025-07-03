@@ -27,7 +27,7 @@ export default function Experience() {
     >
       {/* {fps == null && <Perf position="top-left"/>} */}
 
-      {/* <SoftShadows focus={2} samples={15} size={20}></SoftShadows> */}
+      <SoftShadows focus={2} samples={15} size={20}></SoftShadows>
       <Tripod fps={undefined}></Tripod>
       <Lights></Lights>
       <Scene></Scene>
