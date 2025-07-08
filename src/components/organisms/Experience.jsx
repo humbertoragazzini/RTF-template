@@ -23,6 +23,9 @@ export default function Experience() {
         powerPreference: "high-performance",
         alpha: true
       }}
+      onCreated={({ gl }) => {
+        gl.setClearColor('black'); // ✅ Set black background
+      }}
       frameloop={fps > 0 ? "demand" : "always"}
     >
       {/* {fps == null && <Perf position="top-left"/>} */}

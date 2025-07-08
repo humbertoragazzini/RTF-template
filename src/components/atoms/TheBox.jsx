@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { ThreeMFLoader } from "three/examples/jsm/Addons.js";
 import * as THREE from "three"
 
-export default function TheBox({name,position,envMap}) {
+export default function TheBox({name,position,rotation,envMap}) {
   const meshRef = useRef(null)
 
   useFrame(()=>{
@@ -15,7 +15,7 @@ export default function TheBox({name,position,envMap}) {
   })
 
   return (
-    <Gimbal position={{x:position[0],y:position[1],z:position[2]}} rotation={{x:0,y:0,z:0}} name={name}>
+    <Gimbal position={{x:position[0],y:position[1],z:position[2]}} rotation={{x:rotation[0],y:rotation[1],z:rotation[2]}} name={name}>
       <mesh ref={meshRef} scale={0.5} castShadow receiveShadow>
         <boxGeometry args={[3, 5, 0.1]}></boxGeometry>
         {/* <meshStandardMaterial color={new THREE.Color([1.5,1.5,1.5])} envMap={envMap} metalness={0} roughness={1}></meshStandardMaterial> */}

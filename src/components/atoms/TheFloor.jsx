@@ -14,7 +14,7 @@ export default function TheFloor({envMap}) {
         name={"TheFloor"}
       >
         <mesh>
-          <planeGeometry args={[5, 5, 50]} />
+          <planeGeometry args={[10, 10, 50]} />
           <MeshReflectorMaterial
                       blur={[300, 100]}
           resolution={2048}
