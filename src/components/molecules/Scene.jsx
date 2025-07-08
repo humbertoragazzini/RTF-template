@@ -9,10 +9,10 @@ export default function Scene() {
         {(texture) => {
           return (
             <group>
-              <TheBox envMap={texture} name={"new-box-1"} position={[-1.5, 1.5, 0.5]} rotation={[0,0.2,0]}></TheBox>
-              <TheBox envMap={texture} name={"new-box-2"} position={[0, 1.5, 0]} rotation={[0,0,0]}></TheBox>
-              <TheBox envMap={texture} name={"new-box-3"} position={[1.5, 1.5, 0.5]} rotation={[0,-0.2,0]}></TheBox>
-              <TheFloor envMap={texture}></TheFloor>
+              <TheBox size={{x:1,y:1,z:1}} envMap={texture} name={"new-box-1"} position={[-1.5, 1.5, 0.5]} rotation={[0,0.2,0]}></TheBox>
+              <TheBox size={{x:1,y:1,z:1}} envMap={texture} name={"new-box-2"} position={[0, 1.5, 0]} rotation={[0,0,0]}></TheBox>
+              <TheBox size={{x:1,y:1,z:1}} envMap={texture} name={"new-box-3"} position={[1.5, 1.5, 0.5]} rotation={[0,-0.2,0]}></TheBox>
+              <TheFloor size={{x:1,y:1,z:1}} envMap={texture}></TheFloor>
             </group>)
         }}
       </Effects>
