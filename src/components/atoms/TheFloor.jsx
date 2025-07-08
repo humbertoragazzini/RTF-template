@@ -17,7 +17,7 @@ export default function TheFloor({envMap}) {
           <planeGeometry args={[5, 5, 50]} />
           <meshStandardMaterial
             color="white"
-            envMap={texture}
+            envMap={envMap}
             metalness={0}
             roughness={0.1}
           />
