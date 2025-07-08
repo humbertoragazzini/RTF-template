@@ -2,7 +2,7 @@ import { useFrame } from "@react-three/fiber"
 import Gimbal from "../molecules/Gimball"
 import { CubeCamera } from "@react-three/drei"
 
-export default function TheFloor() {
+export default function TheFloor({envMap}) {
   useFrame(({camera})=>{
     console.log(camera)
   })
@@ -13,21 +13,15 @@ export default function TheFloor() {
         rotation={{ x: -Math.PI / 2, y: 0, z: 0 }}
         name={"TheFloor"}
       >
-        <group>
-          <CubeCamera frames={1} resolution={256} near={1} far={1000}>
-            {(texture) => (
-              <mesh>
-                <planeGeometry args={[5, 5, 50]} />
-                <meshStandardMaterial
-                  color="black"
-                  envMap={texture}
-                  metalness={0}
-                  roughness={0.1}
-                />
-              </mesh>
-            )}
-          </CubeCamera>
-        </group>
+        <mesh>
+          <planeGeometry args={[5, 5, 50]} />
+          <meshStandardMaterial
+            color="white"
+            envMap={texture}
+            metalness={0}
+            roughness={0.1}
+          />
+        </mesh>
       </Gimbal>
     </mesh>
   )
