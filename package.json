@@ -12,8 +12,12 @@
   "dependencies": {
     "@react-three/drei": "^10.0.7",
     "@react-three/fiber": "^9.1.2",
+    "@react-three/postprocessing": "^3.0.4",
     "@tailwindcss/vite": "^4.1.6",
+    "install": "^0.13.0",
     "leva": "^0.10.0",
+    "npm": "^11.4.2",
+    "postprocessing": "^6.37.6",
     "r3f-perf": "^7.2.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
