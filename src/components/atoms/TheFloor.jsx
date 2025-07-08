@@ -4,7 +4,7 @@ import { CubeCamera } from "@react-three/drei"
 
 export default function TheFloor({envMap}) {
   useFrame(({camera})=>{
-    console.log(camera)
+    // console.log(camera)
   })
   return (
     <mesh receiveShadow>
@@ -16,10 +16,10 @@ export default function TheFloor({envMap}) {
         <mesh>
           <planeGeometry args={[5, 5, 50]} />
           <meshStandardMaterial
-            color="white"
+            color="black"
             envMap={envMap}
             metalness={0}
-            roughness={0.1}
+            roughness={0.05}
           />
         </mesh>
       </Gimbal>
